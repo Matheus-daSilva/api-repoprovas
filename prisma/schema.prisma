@@ -34,7 +34,7 @@ model Tests {
   categoryId          Int
   teacherDisciplineId Int
   categories          Categories         @relation(fields: [categoryId], references: [id])
-  TeacherDisciplines  TeacherDisciplines @relation(fields: [teacherDisciplineId], references: [id])
+  teacherDisciplines  TeacherDisciplines @relation(fields: [teacherDisciplineId], references: [id])
 
   @@map("tests")
 }
