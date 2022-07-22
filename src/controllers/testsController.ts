@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { getTestsBySubjectService, postTestsService } from "../service/testsService.js"
+import { getTestsByInstructorService, getTestsBySubjectService, postTestsService } from "../service/testsService.js"
 
 export async function PostTestsController(req: Request, res: Response){
     const infos = req.body
@@ -9,5 +9,10 @@ export async function PostTestsController(req: Request, res: Response){
 
 export async function GetTestsBySubjectController(req: Request, res: Response){
     const respo = await getTestsBySubjectService()
+    return res.status(200).send(respo)
+}
+
+export async function GetTestsByInstructorController(req: Request, res: Response) {
+    const respo = await getTestsByInstructorService()
     return res.status(200).send(respo)
 }

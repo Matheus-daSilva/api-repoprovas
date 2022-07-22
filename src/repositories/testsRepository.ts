@@ -42,3 +42,37 @@ export async function getTestsBySubjectRepository() {
         }
     })
 }
+
+export async function getTestsByInstructorRepository() {
+    return await prisma.teacher.findMany({
+        select: {
+            id: true, 
+            name: true,
+            teachersDisciplines: {select: {
+                id: true,
+                teacherId: true,
+                disciplineId: true,
+                disciplines: {select: {
+                    id: true,
+                    name: true,
+                    termId: true,
+                    terms: {select: {
+                        id: true,
+                        number: true
+                    }}
+            }},
+                tests: {select: {
+                    id: true,
+                    name: true,
+                    pdfUrl: true,
+                    teacherDisciplineId: true,
+                    categoryId: true,
+                    category: {select: {
+                        id: true,
+                        name: true,
+                    }}
+                }}
+            }}
+        }
+    })
+}
