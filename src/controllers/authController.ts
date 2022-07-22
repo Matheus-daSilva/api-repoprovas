@@ -5,5 +5,5 @@ import { signUpService } from "../service/authService.js"
 export async function SignUpController(req: Request, res: Response){
     const { email, password } = req.body
     await signUpService(email, password)
-
+    return res.status(201).send("created")
 }

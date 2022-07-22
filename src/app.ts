@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import cors from "cors"
 import chalk from "chalk"
 import router from "./routes/router.js"
+import { errorHandler } from "./middlewares/errorHandlerMiddleware.js"
 
 dotenv.config()
 
@@ -11,6 +12,7 @@ const app = express()
 app.use(json())
 app.use(cors())
 app.use(router)
+app.use(errorHandler)
 
 const port = process.env.PORT || 4000
 app.listen(port, () => console.log(chalk.green.bold(`The server is runinning on port ${port}`)))

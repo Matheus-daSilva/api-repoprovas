@@ -7,7 +7,7 @@ export type UserData = Omit<Users, "id" | "createdAt">
 
 export async function signUpService(email: string, password: string) {
     const respo = await verifyUser(email)
-    if (respo) throw { type: "conflict", message: "this email adress has already exist" }
+    if (respo) throw { type: "conflict", message: "this email adress has already exist", number: 409}
 
     const passwordHashed = bcrypt.hashSync(password, 10)
 
