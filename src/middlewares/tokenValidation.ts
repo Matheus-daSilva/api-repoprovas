@@ -8,7 +8,7 @@ export async function tokenValidation(req: Request, res: Response, next: NextFun
 
     const decoding = jwt.verify(token, process.env.JWT_KEY)
 
-    if (!decoding) throw { type: "invalid_input", message: "token invalid", number: 400 }
+    if (!decoding) throw { type: "invalid_input", message: "token invalid", number: 422 }
 
     next()
 }

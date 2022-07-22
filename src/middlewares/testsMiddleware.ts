@@ -2,10 +2,12 @@ import { Request, Response, NextFunction } from "express"
 import { testsSchema } from "../schemas/testsSchema.js";
 
 export async function testsMiddleware(req: Request, res: Response, next: NextFunction) {
-    const { body } = req
-    const validation = testsSchema.validate(body, { abortEarly: false });
+    const infos = req.body
+    const validation = testsSchema.validate(infos, { abortEarly: false });
 
-    if (validation.error) throw {type: "invalid_input", message: "wrong credentials", number: 400}
+    console.log("no middleware")
+
+    if (validation.error) throw {type: "invalid_input", message: "wrong credentials", number: 422}
 
     next()
 }
