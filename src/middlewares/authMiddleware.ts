@@ -5,7 +5,7 @@ export async function authMiddleware(req: Request, res: Response, next: NextFunc
     const { body } = req
     const validation = signUpSchema.validate(body, { abortEarly: false });
 
-    if (validation.error) throw {type: "invalid_inputs", message: "something got wrong with your inputs"}
+    if (validation.error) throw {type: "invalid_inputs", message: "wrong credentials", number: 400}
 
     next()
 }
