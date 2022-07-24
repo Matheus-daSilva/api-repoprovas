@@ -1,7 +1,25 @@
 import { Test, Term } from "@prisma/client";
 import prisma from "../config/database.js";
 
-export type TestData = Omit<Test, "id" | "createdAt">
+export type TestData = Omit<Test, "id">
+
+export async function validateTeacher(id: number) {
+    return await prisma.teacher.findUnique({
+        where: {id}
+    })
+}
+
+export async function validateCategory(id: number) {
+    return await prisma.category.findUnique({
+        where: {id}
+    })
+}
+
+export async function validateTeacherDiscipline(id: number) {
+    return await prisma.teacherDiscipline.findUnique({
+        where: {id}
+    })
+}
 
 export async function postTest(testInfos: TestData) {
     return await prisma.test.create({
