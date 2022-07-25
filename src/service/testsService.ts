@@ -5,7 +5,6 @@ export type TestIds = Omit<Test, "id" | "name" | "pdfUrl">
 
 
 export async function postTestsService(testsInfos: TestData){
-    console.log("No service")
     await checkIds({
         categoryId: testsInfos.categoryId,
         teacherDisciplineId: testsInfos.teacherDisciplineId,

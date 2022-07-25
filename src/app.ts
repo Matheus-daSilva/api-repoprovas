@@ -2,7 +2,6 @@ import express, { json } from "express"
 import "express-async-errors"
 import dotenv from "dotenv"
 import cors from "cors"
-import chalk from "chalk"
 import router from "./routes/router.js"
 import { errorHandler } from "./middlewares/errorHandlerMiddleware.js"
 
@@ -14,5 +13,4 @@ app.use(cors())
 app.use(router)
 app.use(errorHandler)
 
-const port = process.env.PORT || 4000
-app.listen(port, () => console.log(chalk.green.bold(`The server is runinning on port ${port}`)))
+export default app
